@@ -6,6 +6,6 @@ import App from "../App";
 export const router: ReturnType<typeof createBrowserRouter> = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <MainPage />,
   }
 ])

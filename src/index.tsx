@@ -5,6 +5,7 @@ import { store } from './store/store';
 import { YMapsLoader } from './components/YMapsLoader';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './pages/router';
+import './index.css'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

@@ -1,5 +1,7 @@
 import { DataSource, Layer } from "./typing";
 
+export const API_URL = "http://localhost:5555"
+
 const TILES_PATH = `${process.env.PUBLIC_URL}./tiles`;
 
 const MAX_ZOOM = 10;

@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { dataSourceProps, layerProps, OPTIONS } from './utils/constants';
 import { YMap, YMapControls, YMapDefaultFeaturesLayer, YMapLayer, YMapTileDataSource, YMapZoomControl } from './utils/initYMaps';
 import { RootState } from './store/store';
-// import classes from "./app.module.css"
 
 let map: number
 

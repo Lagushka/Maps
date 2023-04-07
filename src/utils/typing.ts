@@ -28,3 +28,8 @@ export interface Layer {
     };
   };
 }
+
+export interface mapData {
+  id: number,
+  name: string
+}
