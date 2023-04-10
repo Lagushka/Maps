@@ -1,6 +1,6 @@
 import React, { FC, useRef } from "react";
 import styled from 'styled-components'
-import { Carousel } from "../../components/Carousel";
+import { Carousel } from "../components/Carousel";
 
 const Title = styled.h1`
     font-family: 'PT Serif', serif;

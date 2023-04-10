@@ -9,11 +9,9 @@ const StyledLinkedSlide = styled.a`
   align-items: center;
   justify-content: space-between;
   height: 320px;
-  width: 400px;
   box-sizing: border-box;
   border-radius: 40px;
-  padding: 20px 0 10px 0;
-  margin: auto;
+  padding: 20px;
   &:hover {
     background-color: #ffffff;
   }
