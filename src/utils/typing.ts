@@ -5,7 +5,7 @@ export interface YMaps {
   ref: (arg0: number) => void
 }
 
-export type DataSource = {
+export interface DataSource {
   id: string;
   raster: {
     type: string;
@@ -29,7 +29,36 @@ export interface Layer {
   };
 }
 
-export interface mapData {
+export interface TopMapData {
   id: number,
   name: string
+}
+
+export interface MapPageData extends TopMapData {
+  MAX_ZOOM: number,
+  MIN_ZOOM: number,
+  PIC_WIDTH: number,
+  PIC_HEIGHT: number
+}
+
+export interface Options {
+  location: { 
+    center: number[], 
+    zoom: number
+  },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  projection: any,
+  mode: string,
+  restrictMapArea: number[][],
+  worldOptions: {
+    cycledX: boolean,
+    cycledY: boolean 
+  },
+}
+
+export interface MapOptions {
+  dataSourceProps: DataSource,
+  layerProps: Layer,
+  OPTIONS: Options,
+  worldSize: number
 }

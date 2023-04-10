@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { API_URL } from "../utils/constants";
-import { mapData } from "../utils/typing";
+import { TopMapData } from "../utils/typing";
 
 const StyledLinkedSlide = styled.a`
   display: flex;
@@ -26,9 +26,9 @@ const Image = styled.img.attrs<{ id: string }>(({ id }) => ({
   height: 260px;
 `
 
-export const LinkedSlide: React.FC<{map: mapData}> = ({map}) => {
+export const LinkedSlide: React.FC<{map: TopMapData}> = ({map}) => {
   return (
-    <StyledLinkedSlide>
+    <StyledLinkedSlide href={`/map/${map.id}`}>
       <picture>
         <Image id={map.id.toString()} />
       </picture>

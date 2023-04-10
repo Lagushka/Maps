@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import axios from "axios";
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
-import { mapData } from "../utils/typing";
+import { TopMapData } from "../utils/typing";
 import { LinkedSlide } from "./LinkedSlide";
 import { API_URL } from "../utils/constants";
 
@@ -43,6 +43,8 @@ const styledButton = css`
   align-items: center;
   
   &:disabled {
+    cursor: not-allowed;
+
     svg {
       fill: #8a8a8a;
     }
@@ -62,7 +64,7 @@ const StyledButtonNext = styled(ButtonNext)`
 `
 
 export const Carousel: React.FC<WrapperProps> = ({ popularMapsRef }) => {
-  const [topInfo, setTopInfo] = useState<mapData[]>([])
+  const [topInfo, setTopInfo] = useState<TopMapData[]>([])
 
   useEffect(() => {
     axios.get(`${API_URL}/top`)
@@ -70,10 +72,6 @@ export const Carousel: React.FC<WrapperProps> = ({ popularMapsRef }) => {
       setTopInfo(responce.data)
     })
     .catch((err) => console.log(err))
-  }, [])
-
-  useEffect(() => {
-    console.log(popularMapsRef.current ? getNumberOfVisibleSlides(popularMapsRef.current.offsetWidth) * 400 : 400)
   }, [])
 
   return (
