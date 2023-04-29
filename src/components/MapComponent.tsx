@@ -9,12 +9,25 @@ import { MapOptions, MapPageData } from "../utils/typing";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 let map: number
 
-const MapContainer = styled.div`
-  width: 800px;
-  height: 500px;
+const MapContainer = styled.div<{ fullScreen: boolean }>`
+  width: ${props => props.fullScreen ? "100vw" : "80%"};
+  height: ${props => props.fullScreen ? "100vh" : "500px"};
+  position: ${props => props.fullScreen ? "absolute" : "relative"};
 `
 
-export const MapComponent: React.FC<{ mapData: MapPageData }> = ({ mapData }) => {
+const FullscreenButton = styled.button`
+  position: absolute;
+  right: 20px;
+  top: 20px;
+`
+
+interface Props {
+  mapData: MapPageData,
+  fullScreen: boolean,
+  setFullScreen: (fullScreen: boolean) => void
+}
+
+export const MapComponent: React.FC<Props> = ({ mapData, fullScreen, setFullScreen }) => {
   const APILoaded = useSelector((state: RootState) => state.APILoaded.APILoaded)
   const [mapOptions, setMapOptions] = useState<MapOptions>({
     dataSourceProps: {
@@ -45,7 +58,7 @@ export const MapComponent: React.FC<{ mapData: MapPageData }> = ({ mapData }) =>
     },
     worldSize: 0
   })
-
+  
   useEffect(() => {
     if (APILoaded) {
       const [dataSourceProps, layerProps, OPTIONS, worldSize] = getMapOptions(mapData)
@@ -59,11 +72,11 @@ export const MapComponent: React.FC<{ mapData: MapPageData }> = ({ mapData }) =>
   }, [APILoaded])
 
   return (
-    <MapContainer>
+    <MapContainer fullScreen={fullScreen}>
       {
         APILoaded 
         ? (
-          <YMap {...mapOptions.OPTIONS} ref={(x: number) => map = x}>
+          <YMap { ...mapOptions.OPTIONS } ref={(x: number) => map = x}>
             <YMapTileDataSource {...mapOptions.dataSourceProps} />
             <YMapLayer {...mapOptions.layerProps} />
             <YMapDefaultFeaturesLayer />
@@ -74,6 +87,9 @@ export const MapComponent: React.FC<{ mapData: MapPageData }> = ({ mapData }) =>
         )
         : null
       }
+      <FullscreenButton onClick={() => {setFullScreen(!fullScreen)}}>
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M120 936V636h60v198l558-558H540v-60h300v300h-60V318L222 876h198v60H120Z"/></svg>
+      </FullscreenButton>
     </MapContainer>
   )
 }

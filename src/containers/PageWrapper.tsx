@@ -7,9 +7,8 @@ const StyledMainPage = styled.main`
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  max-width: 1200px;
+  max-width: 1920px;
   background-color: #ffffff;
-  padding: 20px;
 `
 
 export const PageWrapper = forwardRef<HTMLDivElement, { children: ReactNode }>((props, ref) => (
