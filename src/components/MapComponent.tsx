@@ -17,8 +17,14 @@ const MapContainer = styled.div<{ fullScreen: boolean }>`
 
 const FullscreenButton = styled.button`
   position: absolute;
-  right: 20px;
-  top: 20px;
+  cursor: pointer;
+  right: 12px;
+  top: 12px;
+  border: none;
+  padding: 8px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px 0px #00000044;
 `
 
 interface Props {
@@ -88,7 +94,11 @@ export const MapComponent: React.FC<Props> = ({ mapData, fullScreen, setFullScre
         : null
       }
       <FullscreenButton onClick={() => {setFullScreen(!fullScreen)}}>
-        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M120 936V636h60v198l558-558H540v-60h300v300h-60V318L222 876h198v60H120Z"/></svg>
+        {
+          fullScreen
+          ? <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="m122 976-42-42 298-298H180v-60h300v300h-60V678L122 976Zm358-400V276h60v198l298-298 42 42-298 298h198v60H480Z"/></svg>
+          : <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M120 936V636h60v198l558-558H540v-60h300v300h-60V318L222 876h198v60H120Z"/></svg>
+        }
       </FullscreenButton>
     </MapContainer>
   )
